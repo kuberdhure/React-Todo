@@ -44,10 +44,10 @@ class NewTodo extends React.Component {
           ref={this.state.inputref}
         />
         <div className="addNewBtn" onClick={this.handleClick}>
-          <img src="/assets/icons/add-48.png" alt="add-todo" />
+          <img src="assets/icons/add-48.png" alt="add-todo" />
         </div>
         <div className="clearBtn" onClick={this.deleteAll}>
-          <img src="/assets/icons/delete-bin-48.png" alt="clear-todos" />
+          <img src="assets/icons/delete-bin-48.png" alt="clear-todos" />
         </div>
       </div>
     );

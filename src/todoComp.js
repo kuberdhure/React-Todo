@@ -39,7 +39,7 @@ class ToDoComponent extends React.Component {
 
         <div className="complete" onClick={this.isComplete}>
           <img
-            src={`/assets/icons/${
+            src={`assets/icons/${
               this.state.isComplete ? "unchecked" : "checked"
             }-checkbox-48.png`}
             alt="toggle-todo-completion"
@@ -47,7 +47,7 @@ class ToDoComponent extends React.Component {
         </div>
 
         <div className="delete" onClick={this.delete}>
-          <img src="/assets/icons/delete-48.png" alt="delete-bin" />
+          <img src="assets/icons/delete-48.png" alt="delete-bin" />
         </div>
       </div>
     );
