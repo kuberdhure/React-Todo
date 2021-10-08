@@ -94,6 +94,7 @@ input[type="checkbox"] {
 
 .complete,
 .delete {
+  cursor: pointer;
   margin: 0 2%;
 }
 
