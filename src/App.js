@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import todos from "./todolist";
+import ToDoComponent from "./todoComp";
+import NewTodo from "./NewTodo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+if (window.localStorage.getItem("kd-todos")) {
+  for (var todo of JSON.parse(window.localStorage.getItem("kd-todos"))) {
+    todos.push(todo);
+  }
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentTodos: todos,
+    };
+  }
+
+  updateTodos = () => {
+    this.setState({ currentTodos: todos });
+    window.localStorage.setItem("kd-todos", JSON.stringify(todos));
+  };
+
+  render() {
+    const items = this.state.currentTodos
+      .sort((a, b) => {
+        if (a.isDone !== b.isDone) {
+          return a.isDone ? 1 : -1;
+        }
+        return 0;
+      })
+      .map((item) => (
+        <ToDoComponent
+          key={item.id}
+          id={item.id}
+          todo={item.todo}
+          isComplete={item.isDone}
+          updateTodos={this.updateTodos}
+        />
+      ));
+    return (
+      <div className="App">
+        <NewTodo updateTodos={this.updateTodos} />
+        <div className="toDoItems">{items}</div>
+      </div>
+    );
+  }
 }
 
 export default App;
