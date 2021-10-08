@@ -53,7 +53,7 @@ body {
 
 .todoComponent[data-completed="true"] {
   filter: grayscale(100%);
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .todoComponent[data-completed="true"] .txt {
