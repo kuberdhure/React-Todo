@@ -1,27 +1,31 @@
 import React from "react";
 import "./App.css";
 import todos from "./todolist";
+import { v4 as uuid } from "uuid";
 class NewTodo extends React.Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
-
     this.state = {
       inputref: this.myRef,
     };
   }
 
+  generateID = () => {
+    this.id = uuid();
+    return this.id;
+  };
+
   handleClick = () => {
+    let uid = this.generateID();
     let inp = this.state.inputref;
-    let no = todos.length;
     if (inp.current.value !== "") {
       todos.push({
-        id: no,
+        id: uid,
         todo: inp.current.value,
         isDone: false,
       });
       this.props.updateTodos();
-      no++;
     } else {
       alert("Input can't be empty");
     }
